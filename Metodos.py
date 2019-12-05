@@ -6,8 +6,8 @@ from matplotlib.pyplot import imshow
 from matplotlib import pyplot as plt
 
 def buscar_dientes(imgColor, imgGray): 
-    cv2.imshow( "Titulo", imgColor )
-    cv2.waitKey()
+    # cv2.imshow( "Titulo", imgColor )
+    # cv2.waitKey()
     #kernel
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(8,8))                    
     #Binarizacion
