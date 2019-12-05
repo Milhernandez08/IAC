@@ -15,7 +15,7 @@ def buscar_dientes(imgColor, imgGray):
     imgBinarizada = cv2.threshold(imgGray, umbral, 255, cv2.THRESH_BINARY)[1]        
     # cv2.imwrite('ImgGeneradas/dientes_detectados/binarizada.png', imgBinarizada)    
     erocion = cv2.erode(imgBinarizada, kernel, iterations=7)     
-    contours = cv2.findContours(erocion,1,2)[1]
+    contours = cv2.findContours(erocion,1,2)[0]
     i = 0
     for cnt in contours:
         # cnt_len = cv2.arcLength(cnt, True)
@@ -87,9 +87,9 @@ def detectar_lineas(imgColor):
     # cv2.imwrite('ImgGeneradas/lineas_detectadas/median-blur.png', median)    
     
     # Buscamos las lineas
-    contornos = cv2.findContours(median, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[1]
+    contornos = cv2.findContours(median, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[0]
     
-    cv2.polylines(result,contornos,1, (0,255,0))    
+    # cv2.polylines(result,contornos,1, (0,255,0))    
     # cv2.imwrite('ImgGeneradas/lineas_detectadas/result.jpg',result)
 
     if (len(contornos) > 500):
