@@ -38,7 +38,7 @@ def upload():
 
 
 
-        # valor = Modelo.Resultado(Colores.Encontrar_Caracteristicas(c))
+        valor = Modelo.Resultado(Colores.Encontrar_Caracteristicas(c))
         # valor = Modelo.Resultado([0., 1., 0., 1., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.])
 
         print(valor)
