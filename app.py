@@ -4,6 +4,7 @@ from correo import Correo
 
 import os
 import time
+import Colores
 import Carteciano_a_Polar
 import RED.Modelo as Modelo
 
@@ -35,7 +36,9 @@ def upload():
 
         c = Carteciano_a_Polar.obtener_Imagen(filename)
 
-        valor = Modelo.Resultado([0., 1., 0., 1., 0., 0., 1., 0.])
+
+
+        valor = Modelo.Resultado(Colores.Encontrar_Caracteristicas(c))
 
         print(valor)
 
