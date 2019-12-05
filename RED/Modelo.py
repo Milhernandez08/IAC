@@ -10,7 +10,7 @@ def Resultado(Caracteristicas):
     detalles.append(Caracteristicas)
     clf_from_joblib = joblib.load('RED_N.pkl')
     pred = clf_from_joblib.predict(detalles)
-    print("Desde la red neuronal: ", pred[0])
+    # print("Desde la red neuronal: ", pred[0])
     return pred[0]
 
-print ("DESDE LA FUNCION: ", Resultado([0., 1., 0., 1., 0., 0., 1., 0.]))
+# print ("DESDE LA FUNCION: ", Resultado([0., 1., 0., 1., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.]))

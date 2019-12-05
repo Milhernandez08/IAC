@@ -9,7 +9,7 @@ encoder = LabelEncoder()
 
 # df = pd.DataFrame()
 
-X = datos[['Blanco', 'Amarillo', 'Cafe', 'Rojiso', 'Anaranjado', 'Lineas', 'Forma_n', 'Contorno (']]
+X = datos[['Blanco','Amarillo','Cafe','Rojiso','Anaranjado','Lineas','Forma_n','Contorno (','Negro','Gris','Violeta','Verde','Azul','Dientes_Caballo']]
 y = datos['RES']
 
 from sklearn.model_selection import train_test_split
@@ -34,4 +34,4 @@ from sklearn.metrics import classification_report
 print(classification_report(y_test, predicciones))
 
 from sklearn.externals import joblib
-joblib.dump(mlp, 'Clasificador.pkl')
+joblib.dump(mlp, 'RED_N.pkl')

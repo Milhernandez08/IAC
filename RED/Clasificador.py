@@ -11,7 +11,7 @@ df = pd.DataFrame(datos)
 # print(pred)
 
 etiquetas = ['Blanco','Amarillo','Cafe','Rojiso','Anaranjado','Lineas','Forma_n','Contorno (','Negro','Gris','Violeta','Verde','Azul','Dientes_Caballo']
-X = datos[['Blanco', 'Amarillo', 'Cafe', 'Rojiso', 'Anaranjado', 'Lineas', 'Forma_n', 'Contorno (']]
+X = datos[['Blanco','Amarillo','Cafe','Rojiso','Anaranjado','Lineas','Forma_n','Contorno (','Negro','Gris','Violeta','Verde','Azul','Dientes_Caballo']]
 y = datos['RES']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)

@@ -60,7 +60,7 @@ def obtener_Imagen(Nombre_Imagen_Nueva):
             cv2.imwrite(RESPALDO+"Paso_2.jpg", polar_img)
 
             # -------- Ajuste de la imagen modificada, quitando lo no util --------
-
+            
             crop_img  = polar_img[0:3408, 0:2400] # Area que es util de la imagen
 
             # -------- Tercer Paso Terminado, Guardar evidencia --------
