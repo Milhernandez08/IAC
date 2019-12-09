@@ -12,7 +12,8 @@ encoder = LabelEncoder()
 X = datos[['Blanco','Amarillo','Cafe','Rojiso','Anaranjado','Lineas','Forma_n','Contorno (','Negro','Gris','Violeta','Verde','Azul','Dientes_Caballo']]
 y = datos['RES']
 
-from sklearn.model_selection import train_test_split
+# from sklearn.model_selection import train_test_split
+from ValidadcionCruzada import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y)
 
 from sklearn.preprocessing import StandardScaler
