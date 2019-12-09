@@ -137,10 +137,10 @@ def Encontrar_Caracteristicas(imagen):
 
     return datos
 
-imagen          = cv2.imread('Paso_4.jpg')
-respuesta = Encontrar_Caracteristicas(imagen)
+# imagen          = cv2.imread('Paso_4.jpg')
+# respuesta = Encontrar_Caracteristicas(imagen)
 
-print( respuesta )
+# print( respuesta )
 
-cv2.imshow( "Imagen",respuesta[0] )
-cv2.waitKey()
+# cv2.imshow( "Imagen",respuesta[0] )
+# cv2.waitKey()
