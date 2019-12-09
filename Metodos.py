@@ -13,7 +13,7 @@ def buscar_dientes(imgColor, imgGray):
     #Binarizacion
     umbral = cv2.threshold(imgGray,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)[0]   
     imgBinarizada = cv2.threshold(imgGray, umbral, 255, cv2.THRESH_BINARY)[1]        
-    # cv2.imwrite('ImgGeneradas/dientes_detectados/binarizada.png', imgBinarizada)    
+    cv2.imwrite('binarizada.png', imgBinarizada)    
     erocion = cv2.erode(imgBinarizada, kernel, iterations=7)     
     contours = cv2.findContours(erocion,1,2)[0]
     i = 0
@@ -31,8 +31,8 @@ def buscar_dientes(imgColor, imgGray):
         elif len(approx) == 9:
             i+=1
             cv2.drawContours(imgColor,[cnt],0,(0,0,255),-1)            
-    # cv2.imwrite('ImgGeneradas/dientes_detectados/erosion.png', erocion) 
-    # cv2.imwrite('ImgGeneradas/dientes_detectados/dientes.png', imgColor)
+    cv2.imwrite('erosion.png', erocion) 
+    # cv2.imwrite('dientes.png', imgColor)
     if (i > 5):
         return 1
     else:
@@ -96,3 +96,9 @@ def detectar_lineas(imgColor):
         return 1
     else:
         return 0
+
+
+# a = cv2.imread('01.jpg',0)
+# b = cv2.imread('01.jpg')
+
+# print(buscar_dientes(b,a))

@@ -35,7 +35,16 @@ def Encontrar_Caracteristicas(imagen):
     # imagen          = cv2.imread('Paso_4.jpg')
     imagenHSV       = cv2.cvtColor( imagen, cv2.COLOR_BGR2HSV )
 
-    maskBlanco      = cv2.inRange( imagenHSV, Blanco_Unico, Blanco_Unico )
+    # Partes de zonas
+    Partes          = int(imagenHSV.shape[0]/4)
+
+    # Zonas de la imagen
+    Zona_Central    = imagenHSV[0:Partes, 0:imagenHSV.shape[1]]
+    Zona_Interna    = imagenHSV[Partes:Partes*2, 0:imagenHSV.shape[1]]
+    Zona_Intermedia = imagenHSV[Partes*2:Partes*3, 0:imagenHSV.shape[1]]
+    Zona_Periferica = imagenHSV[Partes*3:Partes*4, 0:imagenHSV.shape[1]]
+
+    maskBlanco      = cv2.inRange( Zona_Central, Blanco_Unico, Blanco_Unico )
 
     maskAmarillo    = cv2.inRange( imagenHSV, Amarillo_Ligero, Amarillo_Oscuro )
 
@@ -56,6 +65,7 @@ def Encontrar_Caracteristicas(imagen):
     maskAzul        = cv2.inRange( imagenHSV, Azul_Ligero, Azul_Oscuro )
 
     Blanco          = cv2.findContours(maskBlanco, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[1]   
+    # Blanco          = cv2.findContours(Zona_Central, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[1]   
     Amarillo        = cv2.findContours(maskAmarillo, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[1]       
     Cafe            = cv2.findContours(maskCafe, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[1]       
     Rojo            = cv2.findContours(maskRojo, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[1]       
@@ -67,27 +77,59 @@ def Encontrar_Caracteristicas(imagen):
 
     datos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-
     if Blanco is not None:
-        datos[0] = 1
-    if Naranja is not None:
-        datos[4] = 1
+        for contorno in Blanco:
+            area = cv2.contourArea(contorno)
+            if area > 20:
+                datos[0] = 1
+
     if Amarillo is not None:
-        datos[1] = 1
+        for contorno in Amarillo:
+            area = cv2.contourArea(contorno)
+            if area > 20:
+                datos[1] = 1
+
     if Cafe is not None:
-        datos[2] = 1
+        for contorno in Cafe:
+            area = cv2.contourArea(contorno)
+            if area > 20:
+                datos[2] = 1
+
     if Rojo is not None:
-        datos[3] = 1
+        for contorno in Rojo:
+            area = cv2.contourArea(contorno)
+            if area > 20:
+                datos[3] = 1
+                
     if Naranja is not None:
-        datos[4] = 1
+        for contorno in Naranja:
+            area = cv2.contourArea(contorno)
+            if area > 20:
+                datos[4] = 1
+
     if Gris is not None:
-        datos[9] = 1
+        for contorno in Gris:
+            area = cv2.contourArea(contorno)
+            if area > 20:
+                datos[9] = 1
+
     if Violeta is not None:
-        datos[10] = 1
+        for contorno in Violeta:
+            area = cv2.contourArea(contorno)
+            if area > 20:
+                datos[10] = 1
+
     if Verde is not None:
-        datos[11] = 1
+        for contorno in Verde:
+            area = cv2.contourArea(contorno)
+            if area > 20:
+                datos[11] = 1
+
     if Azul is not None:
-        datos[12] = 1
+        for contorno in Azul:
+            area = cv2.contourArea(contorno)
+            if area > 20:
+                datos[12] = 1
 
     imgGris = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
     datos[13] = Mt.buscar_dientes(imagen, imgGris)
@@ -95,10 +137,10 @@ def Encontrar_Caracteristicas(imagen):
 
     return datos
 
-# imagen          = cv2.imread('Paso_4.jpg')
-# respuesta = Encontrar_Caracteristicas(imagen)
+imagen          = cv2.imread('Paso_4.jpg')
+respuesta = Encontrar_Caracteristicas(imagen)
 
-# print( respuesta )
+print( respuesta )
 
-# cv2.imshow( "Imagen",respuesta[0] )
-# cv2.waitKey()
+cv2.imshow( "Imagen",respuesta[0] )
+cv2.waitKey()
